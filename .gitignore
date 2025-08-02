@@ -1,4 +1,25 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
 .venv/
+env/
+venv/
+
+# VSCode settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Test output
+*.pytest_cache/
+
+# dev env files
 uv.lock
 *.egg-info/
-__pycache__/
