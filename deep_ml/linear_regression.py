@@ -32,6 +32,7 @@ def solve_linear_regression(X: np.ndarray, y: np.ndarray, mode: str = "analytica
         linear_nn = LinearRegressionModel(input_dim=X_t.shape[1])
         optimizer = torch.optim.SGD(linear_nn.parameters(), lr=0.01)
         max_iters = 100
+        prev_loss = float('inf')
         for i in range(max_iters):
             pred = linear_nn(X_t)
             loss = torch.mean((pred - y_t)**2)
@@ -39,6 +40,10 @@ def solve_linear_regression(X: np.ndarray, y: np.ndarray, mode: str = "analytica
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+
+            if abs(loss.item() - prev_loss) < 1e-2:
+                break
+            prev_loss = loss.item()
         return linear_nn.theta.data
     else:
         raise ValueError(f"Invalid mode: {mode}")

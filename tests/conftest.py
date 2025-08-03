@@ -1,5 +1,6 @@
 import pytest
 import numpy as np
+import torch
 
 
 np.random.seed(6)
