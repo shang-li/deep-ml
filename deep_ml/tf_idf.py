@@ -16,7 +16,7 @@ def compute_tf_idf(corpus: List[List[str]], query: List[str]) -> List[List[float
             idf[j] = idf[j] + 1 if tf[i][j] > 0 else idf[j]
     idf = np.array(idf).reshape(1, -1)
     tf = np.array(tf)
-    #import pdb; pdb.set_trace()
+
     return tf * (np.log((docs_total + 1) / (idf + 1)) + 1)
     
 

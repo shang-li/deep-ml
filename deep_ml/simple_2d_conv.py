@@ -16,20 +16,3 @@ def simple_2d_conv(X: np.ndarray, kernel: np.ndarray, padding: int = 0, stride: 
         for j in range(out_width):
             X_conv[i, j] = np.sum(X_padded[i * stride:i * stride + k_height, j * stride:j * stride + k_width] * kernel)
     return X_conv
-
-input_matrix = np.array([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 16]
-])
-
-kernel = np.array([
-    [1, 0],
-    [-1, 1]
-])
-
-padding = 1
-stride = 2
-
-print(simple_2d_conv(input_matrix, kernel, padding, stride))

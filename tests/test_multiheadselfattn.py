@@ -1,4 +1,3 @@
-import numpy as np
 import torch
 import torch.nn as nn
 from deep_ml import MultiHeadSelfAttention
@@ -30,7 +29,6 @@ def test_multihead_self_attention():
         #torch_attn.out_proj.bias.zero_()
     
     X = torch.randn(batch_size, seq_len, embed_dim)
-    import pdb; pdb.set_trace()
 
 # Outputs
     out_custom = custom_attn(X)
