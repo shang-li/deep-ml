@@ -17,3 +17,4 @@ class DropoutLayer:
     def backward(self, grad: np.ndarray) -> np.ndarray:
         """Backward pass of the dropout layer."""
         return grad * self.masked / (1 - self.p)
+    
