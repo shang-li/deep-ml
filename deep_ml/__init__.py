@@ -5,6 +5,7 @@ from .simple_2d_conv import simple_2d_conv
 from .self_attention import MultiHeadSelfAttention
 from .tf_idf import compute_tf_idf
 from .compressed_matrix import RowSparseMatrix
+from .optimal_string_alignment import optimal_string_alignment
 
 __all__ = [
     "matrix_vector_dot",
@@ -14,4 +15,5 @@ __all__ = [
     "MultiHeadSelfAttention",
     "compute_tf_idf",
     "RowSparseMatrix",
+    "optimal_string_alignment",
 ]
