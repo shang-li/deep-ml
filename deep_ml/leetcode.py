@@ -54,3 +54,39 @@ def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
     return True
 
 print(canFinish(2, [[0, 1]]))
+
+import numpy as np
+
+def k_fold_cross_validation(X: np.ndarray, y: np.ndarray, k=5, shuffle=True):
+    train_test_ids = []
+    n = len(X)
+    #import pdb; pdb.set_trace()
+    indices_list = list(range(n))
+    if shuffle:
+        np.random.shuffle(indices_list)
+    group_size = n // k
+    for i in range(k):
+        train_test_ids.append(
+            (
+                indices_list[:i * group_size] + indices_list[(i + 1) * group_size:],
+                indices_list[i * group_size: (i + 1) * group_size]
+            )
+        )
+        #print(train_test_ids[i])
+    return train_test_ids
+
+print(k_fold_cross_validation(np.array([0,1,2,3,4,5,6,7,8,9]), np.array([0,1,2,3,4,5,6,7,8,9]), k=2, shuffle=True))
+
+
+def batch_iterator(X, y=None, batch_size=64):
+    datasets = []
+    n = len(X)
+    nbatches = n // batch_size + (n % batch_size > 0)
+    for k in range(nbatches):
+        datasets.append(
+            [X[k * batch_size:min(n, (k+1) * batch_size)],
+            y[k * batch_size:min(n, (k+1) * batch_size)]]
+        )
+    return datasets
+
+print(batch_iterator(np.array([[1, 1], [2, 2], [3, 3], [4, 4]]), batch_size=3))
